@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nosso Amor</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <canvas id="hearts-canvas"></canvas>
+
+  <div class="container">
+    <div class="music-player">
+      <img src="/assets/logomusic.jpg" alt="Capa da Música" />
+      <div class="info-musica">
+        <div>Ela une todas as coisa</div>
+        <span>Jorge Vercilo</span>
+
+        <div class="controls">
+          <button class="control-btn" onclick="retrocederAudio()">
+            <svg viewBox="0 0 24 24"><path d="M11 18V6l-8.5 6L11 18zM13 6v12l8.5-6L13 6z"/></svg>
+          </button>
+          <button class="control-btn" onclick="togglePlayAudio()" id="play-pause-btn">
+            <svg id="play-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </button>
+          <button class="control-btn" onclick="avancarAudio()">
+            <svg viewBox="0 0 24 24"><path d="M13 6v12l8.5-6L13 6zM11 6v12l-8.5-6L11 6z"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="photo-frame">
+      <video id="videoNosso" src="/assets/nos.mp4" autoplay loop></video>
+    </div>
+
+    <div class="tempo-amor">
+      Estamos juntos há:
+      <div id="timer"></div>
+    </div>
+
+    <div class="mensagem">
+      <p id="mensagem-personalizada">Feliz dia dos namorados, meu bem! Você é meu mundo. Te amo demais!</p>
+    </div>
+  </div>
+
+  <audio id="musica" src="musica.mp3" autoplay loop></audio>
+  <script src="script.js"></script>
+</body>
+</html>
+
