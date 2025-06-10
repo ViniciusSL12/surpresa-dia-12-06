@@ -1,31 +1,36 @@
+/* Global Reset */
+* {
+  box-sizing: border-box;
+}
 
 html, body {
-  height: 100%;
+  min-height: 100dvh;
   margin: 0;
   font-family: sans-serif;
   background-color: #000000;
   color: white;
-  overflow: hidden;
+  overflow-y: auto; /* permite scroll se necessário */
 }
 
 body {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
 }
 
-
+/* Conteúdo principal */
 .container {
-  flex: 1;
+  min-height: 100dvh;
   display: flex;
   flex-direction: column;
-  justify-content: space-between; 
+  justify-content: space-between;
   align-items: center;
   padding: 20px;
-  box-sizing: border-box;
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
 }
 
-
+/* Music Player */
 .music-player {
   display: flex;
   align-items: center;
@@ -91,11 +96,10 @@ body {
   transform: scale(1.2);
 }
 
-
+/* Quadro com imagem ou vídeo */
 .photo-frame {
   width: 100%;
   max-width: 300px;
-  aspect-ratio: 3/5; 
   border-radius: 20px;
   overflow: hidden;
   position: relative;
@@ -105,11 +109,12 @@ body {
 .photo-frame video,
 .photo-frame img {
   width: 100%;
-  height: 100%;
+  height: auto;
+  display: block;
   object-fit: cover;
 }
 
-
+/* Texto e cronômetro */
 .tempo-amor {
   font-size: 18px;
   margin-top: 20px;
@@ -129,9 +134,9 @@ body {
   max-width: 90%;
 }
 
-
+/* Corações animados no topo */
 #hearts-canvas {
-  position: fixed;
+  position: absolute; /* em vez de fixed para evitar cortes */
   top: 0;
   left: 0;
   width: 100%;
@@ -140,8 +145,7 @@ body {
   pointer-events: none;
 }
 
-
-
+/* Responsivo: smartphones em geral */
 @media (max-width: 480px) {
   .music-player {
     flex-direction: row;
@@ -173,7 +177,6 @@ body {
   }
 
   .photo-frame {
-    aspect-ratio: 3/5;
     width: 90%;
     max-width: 280px;
     border-radius: 16px;
@@ -193,14 +196,58 @@ body {
   }
 }
 
+/* Responsivo: tablets */
 @media (min-width: 481px) and (max-width: 768px) {
   .photo-frame {
-    aspect-ratio: 3/5;
     width: 90%;
     max-width: 300px;
     border-radius: 18px;
   }
 }
+
+/* Responsivo: telas menores que iPhone SE */
+@media (max-width: 375px) {
+  .container {
+    padding: 12px;
+  }
+
+  .music-player {
+    gap: 8px;
+    padding: 10px;
+  }
+
+  .music-player img {
+    width: 80px;
+    height: 80px;
+  }
+
+  .info-musica {
+    font-size: 12px;
+  }
+
+  .control-btn {
+    width: 26px;
+    height: 26px;
+  }
+
+  .control-btn svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .tempo-amor {
+    font-size: 14px;
+  }
+
+  #timer {
+    font-size: 13px;
+  }
+
+  .mensagem {
+    font-size: 12px;
+  }
+}
+
 
 
 
