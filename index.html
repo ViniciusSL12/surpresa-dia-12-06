@@ -2,51 +2,72 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nosso Amor</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Feliz dia dos namorados</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <div id="start-screen">
+    <h1>Feliz Dia dos Namorados 💖</h1>
+    <button id="start-btn">Começar</button>
+  </div>
+
   <canvas id="hearts-canvas"></canvas>
 
   <div class="container">
     <div class="music-player">
       <img src="/assets/logomusic.jpg" alt="Capa da Música" />
       <div class="info-musica">
-        <div>Ela une todas as coisa</div>
+        <div>Ela une todas as coisas</div>
         <span>Jorge Vercilo</span>
 
         <div class="controls">
           <button class="control-btn" onclick="retrocederAudio()">
-            <svg viewBox="0 0 24 24"><path d="M11 18V6l-8.5 6L11 18zM13 6v12l8.5-6L13 6z"/></svg>
+            <svg viewBox="0 0 24 24" stroke="white" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20">
+              <path d="M1 4v6h6" />
+              <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10" />
+            </svg>
           </button>
           <button class="control-btn" onclick="togglePlayAudio()" id="play-pause-btn">
-            <svg id="play-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            <svg id="play-icon" viewBox="0 0 24 24" stroke="white" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20">
+              <path d="M8 5v14l11-7z" />
+            </svg>
           </button>
-          <button class="control-btn" onclick="avancarAudio()">
-            <svg viewBox="0 0 24 24"><path d="M13 6v12l8.5-6L13 6zM11 6v12l-8.5-6L11 6z"/></svg>
+          
+          <button class="control-btn" id="motivo-btn">
+            <svg viewBox="0 0 24 24" stroke="white" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20">
+              <circle cx="12" cy="5" r="1.5" />
+              <circle cx="12" cy="12" r="1.5" />
+              <circle cx="12" cy="19" r="1.5" />
+            </svg>
           </button>
+        </div>
+        
+        <div id="motivo-popup" class="hidden">
+          <p>💖 Escolhi essa música porque ela representa exatamente o que é você na minha vida. Você une tudo o que há de mais lindo, meu bem. Tenho o maior prazer de partilhar minha vida ao teu lado. Eu te amo!</p>
         </div>
       </div>
     </div>
 
     <div class="photo-frame">
-      <video controls autoPlay playsInline muted>
-  <source src="/assets/nos.mp4" type="video/mp4" />
-</video>
+      <video id="video" playsinline>
+        <source src="/assets/nos.mp4" type="video/mp4" />
+      </video>
     </div>
 
     <div class="tempo-amor">
-     💗Eu te amo há💗:
+      💗Eu te amo há💗:
       <div id="timer"></div>
     </div>
 
     <div class="mensagem">
-      <p id="mensagem-personalizada">Feliz dia dos namorados, meu bem! Você é meu mundo. Te amo demais!</p>
+      <p id="mensagem-personalizada">
+        Feliz dia dos namorados, meu bem! Você é meu mundo. Te amo demais!
+      </p>
     </div>
   </div>
 
-  <audio id="musica" src="musica.mp3" autoplay loop></audio>
+  <audio id="musica" src="musica.mp3" preload="auto"></audio>
   <script src="script.js"></script>
 </body>
 </html>

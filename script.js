@@ -1,25 +1,33 @@
 const audio = document.getElementById("musica");
+const video = document.getElementById("video");
 const playIcon = document.getElementById("play-icon");
 
+let isPlaying = false;
+
 function togglePlayAudio() {
-  if (audio.paused) {
-    audio.play();
-    playIcon.innerHTML = '<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>'; // pause icon
+  if (!isPlaying) {
+    audio.play().catch(err => console.error("Erro ao tocar música:", err));
+    video.play().catch(err => console.error("Erro ao tocar vídeo:", err));
+    isPlaying = true;
+    playIcon.innerHTML = '<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>'; // pause
   } else {
     audio.pause();
-    playIcon.innerHTML = '<path d="M8 5v14l11-7z"/>'; // play icon
+    video.pause();
+    isPlaying = false;
+    playIcon.innerHTML = '<path d="M8 5v14l11-7z"/>'; // play
   }
 }
 
 function retrocederAudio() {
-  audio.currentTime = Math.max(0, audio.currentTime - 10);
+  audio.currentTime = 0;
+  video.currentTime = 0;
+  audio.play().catch(err => console.error("Erro ao tocar música:", err));
+  video.play().catch(err => console.error("Erro ao tocar vídeo:", err));
+  isPlaying = true;
+  playIcon.innerHTML = '<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>';
 }
 
-function avancarAudio() {
-  audio.currentTime = Math.min(audio.duration, audio.currentTime + 10);
-}
 
-// Timer
 const startDate = new Date("2022-08-23T00:00:00");
 const timer = document.getElementById("timer");
 
@@ -35,6 +43,7 @@ function updateTimer() {
 
 setInterval(updateTimer, 1000);
 updateTimer();
+
 
 const canvas = document.getElementById("hearts-canvas");
 const ctx = canvas.getContext("2d");
@@ -80,4 +89,30 @@ window.addEventListener("resize", () => {
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
 });
+
+
+const startScreen = document.getElementById("start-screen");
+const startBtn = document.getElementById("start-btn");
+
+startBtn.addEventListener("click", () => {
+  startScreen.style.opacity = "0";
+  setTimeout(() => {
+    startScreen.style.display = "none";
+  }, 600);
+});
+
+
+const motivoBtn = document.getElementById("motivo-btn");
+const motivoPopup = document.getElementById("motivo-popup");
+
+motivoBtn.addEventListener("click", () => {
+  motivoPopup.classList.toggle("hidden");
+  if (!motivoPopup.classList.contains("hidden")) {
+    setTimeout(() => {
+      motivoPopup.classList.add("hidden");
+    }, 8000);
+  }
+});
+
+
 
